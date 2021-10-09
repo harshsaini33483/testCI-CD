@@ -28,16 +28,17 @@ jobs:
     - name: Build with Maven
     - run: mvn -B package --file pom.xml -DskipTests
 
-    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
-
     - name: List the File in Target Dir
       run: ls target -lh
-
-    - name: List the File in Target Dir
-      run: ls staging -lh
     
-    - name: List the File in Target Dir
+    - name: List the File in Current Dir
       run: ls -lh
+
+    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+
+
+    - name: List the File in Staging  Dir
+      run: ls staging -lh
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
