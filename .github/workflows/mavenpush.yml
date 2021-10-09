@@ -30,10 +30,10 @@ jobs:
       run: ls target -lh
     
     - name: List the File in Current Dir
-      run: ls -lh
+      run: ls -ls
 
     - name: Copy Jar to Directory
-    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+      run: mkdir staging && cp target/*jar-with-dependencies.jar staging
 
 
     - name: List the File in Staging  Dir
