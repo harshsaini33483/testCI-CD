@@ -26,8 +26,19 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn clean package -Dmaven.test.skip=true
 
+    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+
+    - name: List the File in Target Dir
+      run: ls target -lh
+
+    - name: List the File in Target Dir
+      run: ls staging -lh
+    
+    - name: List the File in Target Dir
+      run: ls -lh
+      
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
 
@@ -44,5 +55,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
+        file: ./Dockerfile
         push: true
         tags: vinaysaini97/test-github-actions:latest
