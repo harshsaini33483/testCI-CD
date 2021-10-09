@@ -33,7 +33,7 @@ jobs:
       run: ls -ls
 
     - name: Copy Jar to Directory
-      run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+      run: mkdir staging && cp target/*jar staging
 
 
     - name: List the File in Staging  Dir
